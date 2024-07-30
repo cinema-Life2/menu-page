@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        .menu-item {
+            display: none;
+        }
+        .menu-item.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Amaravathi Family Restaurant and Lodge</h1>
+    <h2>Choose Your Category</h2>
+    <button onclick="showMenu('veg')">Veg</button>
+    <button onclick="showMenu('nonveg')">Non-Veg</button>
+    
+    <div id="veg" class="menu-item">
+        <h3>Veg Items</h3>
+        <p>Veg Biryani - ₹100</p>
+        <p>Veg Manchuriya - 150</p>
+    </div>
+    
+    <div id="nonveg" class="menu-item">
+        <h3>Non-Veg Items</h3>
+        <p>Chicken Biryani - ₹200</p>
+        <p>Chicken Curry</p>
+    </div>
+    
+    <script>
+        function showMenu(category) {
+            document.getElementById('veg').classList.remove('active');
+            document.getElementById('nonveg').classList.remove('active');
+            document.getElementById(category).classList.add('active');
+        }
+    </script>
+</body>
+</html>
