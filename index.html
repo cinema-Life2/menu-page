@@ -5,24 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
     <style>
+        body {
+            background: url('default-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            /* Fallback color if the image is not available */
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            transition: background 1s ease; /* Smooth transition for background change */
+        }
         .menu-item {
             display: none;
         }
         .menu-item.active {
             display: block;
         }
+        button {
+            margin: 10px;
+            padding: 15px 25px; /* Medium size box */
+            font-size: 18px; /* Adjust font size for better appearance */
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+        }
+        .veg-button {
+            background-color: green;
+        }
+        .nonveg-button {
+            background-color: red;
+        }
+        h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Brush Script MT', cursive;
+            font-size: 36px; /* Adjust size for better visibility */
+            animation: slideIn 2s forwards;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5); /* Optional: background color for text readability */
+            padding: 10px;
+            border-radius: 5px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        h3 {
+            margin-top: 20px;
+        }
+        p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        /* Sliding animation for welcome message */
+        @keyframes slideIn {
+            from {
+                left: -100%;
+                opacity: 0;
+            }
+            to {
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Amaravathi Family Restaurant and Lodge</h1>
+    <h1 class="welcome-message">Welcome to Amaravathi Family Restaurant and Lodge</h1>
     <h2>Choose Your Category</h2>
-    <button onclick="showMenu('veg')">Veg</button>
-    <button onclick="showMenu('nonveg')">Non-Veg</button>
+    <button class="veg-button" onclick="showMenu('veg')">Veg</button>
+    <button class="nonveg-button" onclick="showMenu('nonveg')">Non-Veg</button>
     
     <div id="veg" class="menu-item">
         <h3>Veg Items</h3>
         <p>Veg Biryani - ₹100</p>
-        <p>Veg Manchuriya - 150</p>
+        <p>Veg Manchuriya</p>
     </div>
     
     <div id="nonveg" class="menu-item">
@@ -33,9 +95,19 @@
     
     <script>
         function showMenu(category) {
+            // Hide all menu items
             document.getElementById('veg').classList.remove('active');
             document.getElementById('nonveg').classList.remove('active');
+            
+            // Show the selected menu item
             document.getElementById(category).classList.add('active');
+            
+            // Change background based on selected category
+            if (category === 'veg') {
+                document.body.style.background = "url('veg-background.jpg') no-repeat center center fixed";
+            } else if (category === 'nonveg') {
+                document.body.style.background = "url('nonveg-background.jpg') no-repeat center center fixed";
+            }
         }
     </script>
 </body>
